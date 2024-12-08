@@ -1,0 +1,10 @@
+Texture2D inputTexture : register(t0);
+SamplerState samplerState : register(s0);
+
+float4 main(float4 position : SV_Position, float2 texCoord : TEXCOORD) : SV_Target {
+    float4 color = inputTexture.Sample(samplerState, texCoord);
+    color.r = pow(color.r, 1.2); // Adjust red channel
+    color.g = pow(color.g, 0.9); // Adjust green channel
+    color.b = pow(color.b, 1.1); // Adjust blue channel
+    return color;
+}
